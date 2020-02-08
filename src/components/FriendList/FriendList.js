@@ -5,15 +5,13 @@ import styles from '../FriendList/FriendList.module.css';
 const FriendList = ({ friends }) => {
   return (
     <ul className={styles.ul}>
-      {friends.map(item => (
-        <li key={item.id} className={styles.li}>
-          <span
-            className={item.isOnline ? styles.spanActive : styles.spanOffline}
-          >
-            {item.isOnline}
+      {friends.map(({ id, isOnline, avatar, name }) => (
+        <li key={id} className={styles.li}>
+          <span className={isOnline ? styles.spanActive : styles.spanOffline}>
+            {isOnline}
           </span>
-          <img className={styles.img} src={item.avatar} alt="" width="48" />
-          <p className={styles.p}>{item.name}</p>
+          <img className={styles.img} src={avatar} alt="" width="48" />
+          <p className={styles.p}>{name}</p>
         </li>
       ))}
     </ul>
