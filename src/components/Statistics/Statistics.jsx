@@ -1,21 +1,19 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Statistics.module.css';
 
 const Statistics = ({ title = 0, stats }) => (
-  <Fragment>
-    <section className={styles.section}>
-      {title.length > 0 && <h2 className={styles.h2}>{title}</h2>}
-      <ul className={styles.ul}>
-        {stats.map(item => (
-          <li key={item.id} className={styles.li}>
-            <span className={styles.spanText}>{item.label}</span>
-            <span className={styles.spanNumber}>{item.percentage}%</span>
-          </li>
-        ))}
-      </ul>
-    </section>
-  </Fragment>
+  <section className={styles.section}>
+    {title.length && <h2 className={styles.h2}>{title}</h2>}
+    <ul className={styles.ul}>
+      {stats.map(({ id, label, percentage }) => (
+        <li key={id} className={styles.li}>
+          <span className={styles.spanText}>{label}</span>
+          <span className={styles.spanNumber}>{percentage}%</span>
+        </li>
+      ))}
+    </ul>
+  </section>
 );
 
 Statistics.propTypes = {
